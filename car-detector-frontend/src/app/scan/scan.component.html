@@ -1,1 +1,11 @@
-<p>scan works!</p>
+<section class="bg-white dark:bg-gray-900">
+  <div class="container px-6 py-10 mx-auto">
+    <div *ngIf="!uploadResponse">
+      <app-scan-cta (uploadResponse)="uploadChanged($event)"></app-scan-cta>
+    </div>
+    <div *ngIf="uploadResponse">
+     <app-scan-result [uploadResponse]="uploadResponse"></app-scan-result>
+    </div>
+  </div>
+
+</section>
