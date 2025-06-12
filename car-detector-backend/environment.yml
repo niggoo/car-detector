@@ -5,7 +5,7 @@ dependencies:
   - python=3.11
   - pip
   - pip:
-    - fastapi
+    - fastapi[standard]
     - uvicorn
     - pydantic
     - python-multipart
@@ -18,3 +18,12 @@ dependencies:
     - scipy
     - datasets
     - tqdm
+    - torch
+    - torchvision
+    - torchtyping
+    - pandas
+    - matplotlib
+    - numpy
+    - safetensors
+    - typing_extensions
+    - passlib

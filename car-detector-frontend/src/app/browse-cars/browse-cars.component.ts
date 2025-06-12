@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CarListComponent} from '../car-list/car-list.component';
 import {CarDetectorApiService} from '../service/car-detector-api/car-detector-api.service';
 import {CarListItem} from '../service/car-detector-api/car-list-item';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-browse-cars',
@@ -13,12 +14,13 @@ import {CarListItem} from '../service/car-detector-api/car-list-item';
 })
 export class BrowseCarsComponent implements OnInit {
   private currentPage: number = 1;
-  private pageSize: number = 10;
+  private pageSize: number = 8;
   private totalItems!: number;
 
   cars: Array<CarListItem> = [];
 
-  constructor(private carDetectorApiService: CarDetectorApiService) {
+  constructor(private carDetectorApiService: CarDetectorApiService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -49,5 +51,9 @@ export class BrowseCarsComponent implements OnInit {
       this.currentPage--;
       this.fetchCars();
     }
+  }
+
+  carSelected(carId: number) {
+    this.router.navigate(["scan"], { queryParams: {carId } });
   }
 }

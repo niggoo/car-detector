@@ -1,0 +1,21 @@
+<h1 class="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">Scan results
+</h1>
+
+<p class="mt-4 mb-8 text-center text-gray-500 dark:text-gray-300">
+  Thank you for uploading your car image, we've processed the image and these are your results!
+</p>
+<div class="mt-8">
+  <div
+    class="flex flex-col items-center p-8">
+    <img class="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" [src]="apiUrl + '/' + imageSimilarityResult().url"
+         alt="">
+
+    <h1
+      class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">{{ imageSimilarityResult().make }}</h1>
+
+    <p
+      class="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">{{ imageSimilarityResult().model }}</p>
+  </div>
+</div>
+
+<app-car-list [cars]="imageSimilarityResult().alternatives" (carSelected)="carSelectedHandler($event)"></app-car-list>

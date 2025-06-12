@@ -1,0 +1,17 @@
+<section class="bg-white dark:bg-gray-900">
+    <div class="container px-6 py-8 mx-auto">
+        <h2 class="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">Your Uploads</h2>
+
+        <!-- Display message if there are no images -->
+        <div *ngIf="profileInfo?.images?.length === 0" class="text-center py-8">
+            <p class="text-gray-600 dark:text-gray-300">No images found. Please scan or upload images to see them here.</p>
+        </div>
+
+        <!-- Display images if they exist -->
+        <div class="grid gap-8 mt-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <a href="#" (click)="selectCarHandler(image)" class="w-full sm:max-w-xs text-center" *ngFor="let image of profileInfo?.images">
+                <img [src]="apiUrl + '/' + image" class="object-cover object-center w-full h-48 mx-auto rounded-lg" alt="avatar" />
+            </a>
+        </div>
+    </div>
+</section>

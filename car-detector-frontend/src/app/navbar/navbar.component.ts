@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {NgClass, NgIf} from '@angular/common';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
+import {SessionService} from '../service/session.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,8 +15,21 @@ import {RouterLink} from '@angular/router';
 })
 export class NavbarComponent {
   isOpen = false;
+  isLoggedIn: boolean = false;
+
+  constructor(private sessionService: SessionService,
+              private router: Router) {
+    this.sessionService.userId$.subscribe(userId => {
+      this.isLoggedIn = userId !== null;
+    })
+  }
 
   toggleMenu() {
     this.isOpen = !this.isOpen;
+  }
+
+  logoutHandler() {
+    this.sessionService.reset();
+    this.router.navigate([""]);
   }
 }

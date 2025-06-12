@@ -1,0 +1,13 @@
+<div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 sm:grid-cols-2 xl:grid-cols-4">
+  <div *ngFor="let car of cars()" (click)="selectCar(car.id)"
+       class="cursor-pointer w-full overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
+    <img class="object-cover w-full h-56" [src]="apiUrl + '/' + car.url" alt="avatar">
+
+    <div class="py-5 text-center">
+      <div class="block text-xl font-bold text-gray-800 dark:text-white" tabindex="0"
+         role="link">{{ car.make }}</div>
+      <span class="text-sm text-gray-700 dark:text-gray-200">{{ car.model }}</span>
+    </div>
+  </div>
+
+</div>
