@@ -43,6 +43,7 @@ export class BrowseCarsComponent implements OnInit {
     if (this.currentPage + 1 <= this.totalItems / this.pageSize) {
       this.currentPage++;
       this.fetchCars()
+      window.scrollTo({top: 0, behavior: "smooth"});
     }
   }
 
@@ -50,6 +51,7 @@ export class BrowseCarsComponent implements OnInit {
     if (this.currentPage - 1 >= 1) {
       this.currentPage--;
       this.fetchCars();
+      window.scrollTo({top: 0, behavior: "smooth"});
     }
   }
 

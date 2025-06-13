@@ -29,4 +29,24 @@ def predict(input_image: torch.Tensor, model: nn.Module, fingerprint_database: p
             )
             similarities.append((cosine_sim.item(), str(row["file"]), int(row["class"]), index + 1))
 
-    return sorted(similarities, key=lambda x: x[0], reverse=True)[:k], pred.item()
+    # Sort by similarity score in descending order
+    similarities.sort(key=lambda x: x[0], reverse=True)
+
+    # Dictionary to keep track of class counts
+    class_counts = {}
+    result = []
+
+    for item in similarities:
+        class_id = item[2]
+        # Initialize count for new classes
+        if class_id not in class_counts:
+            class_counts[class_id] = 0
+        # Append the item if fewer than 2 have been added from its class
+        if class_counts[class_id] < 2:
+            result.append(item)
+            class_counts[class_id] += 1
+            # Stop if we have enough items
+            if len(result) == k:
+                break
+
+    return result, pred.item()

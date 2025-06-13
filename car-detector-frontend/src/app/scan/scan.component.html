@@ -1,11 +1,18 @@
 <section class="bg-white dark:bg-gray-900">
   <div class="container px-6 py-10 mx-auto">
-    <div *ngIf="!similarityImageResponse">
-      <app-scan-cta (uploadResponse)="uploadChanged($event)"></app-scan-cta>
+    <!-- Loading Animation -->
+    <div *ngIf="isLoading" class="flex justify-center items-center h-64">
+      <div class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-600 dark:border-white"></div>
     </div>
-    <div *ngIf="similarityImageResponse">
-     <app-scan-result [imageSimilarityResult]="similarityImageResponse" (carSelected)="carSelectedHandler($event)"></app-scan-result>
+
+    <!-- Existing Components -->
+    <div *ngIf="!isLoading">
+      <div *ngIf="!similarityImageResponse">
+        <app-scan-cta (uploadResponse)="uploadChanged($event)"></app-scan-cta>
+      </div>
+      <div *ngIf="similarityImageResponse">
+        <app-scan-result [imageSimilarityResult]="similarityImageResponse" (carSelected)="carSelectedHandler($event)" (reset)="resetHandler()"></app-scan-result>
+      </div>
     </div>
   </div>
-
 </section>

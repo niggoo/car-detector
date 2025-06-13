@@ -30,6 +30,7 @@ export class NavbarComponent {
 
   logoutHandler() {
     this.sessionService.reset();
+    this.isOpen = false;
     this.router.navigate([""]);
   }
 }

@@ -1,4 +1,4 @@
-# README.m
+# README
 
 ## Project structure
 
@@ -53,3 +53,7 @@ This will boot up a dev server that serves the angular app on `localhost:4200`
 Open up a browser and navigate to `http://localhost:4200`. Upload new images, have the model serve up similar images. Register, Login, Logout.  
 Browse the catalogue of existing cars, and find similar cars to those.  
 When logged in, the uploaded images are stored and can be reviewed again in the Profile section (`http://localhost:4200/profile`), one can click on them and re-check the previous similarity result.
+
+
+## Video
+A video showcasing the app can be viewed at https://files.auroria.io/car-detector/screencast.webm.

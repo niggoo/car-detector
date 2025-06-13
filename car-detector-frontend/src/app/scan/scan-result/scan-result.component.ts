@@ -14,9 +14,14 @@ import {CarListComponent} from '../../car-list/car-list.component';
 export class ScanResultComponent {
   imageSimilarityResult: InputSignal<SimilarityImageResponse> = input.required();
   carSelected = output<number>();
+  reset = output<void>();
   public apiUrl = environment.apiUrl;
 
   carSelectedHandler(carId: number) {
     this.carSelected.emit(carId)
+  }
+
+  rescanAnotherHandler() {
+    this.reset.emit();
   }
 }
